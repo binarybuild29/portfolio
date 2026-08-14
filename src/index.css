@@ -1,0 +1,201 @@
+@import "tailwindcss";
+
+/* Self-hosted Plus Jakarta Sans (replaces next/font/google) */
+@import "@fontsource/plus-jakarta-sans/300.css";
+@import "@fontsource/plus-jakarta-sans/400.css";
+@import "@fontsource/plus-jakarta-sans/500.css";
+@import "@fontsource/plus-jakarta-sans/600.css";
+@import "@fontsource/plus-jakarta-sans/700.css";
+@import "@fontsource/plus-jakarta-sans/800.css";
+
+:root {
+  /* Core surfaces — true black, not navy-tinted */
+  --color-background: #050505;
+  --color-background-alt: #0a0a0a;
+  --color-surface: #111111;
+  --color-surface-raised: #161616;
+  --color-border: #262626;
+  --color-border-strong: #383838;
+
+  /* Text */
+  --color-foreground: #f5f5f5;
+  --color-muted: #a3a3a3;
+  --color-muted-soft: #737373;
+
+  /* Brand accent — the logo's periwinkle/lavender gradient, used sparingly
+     as the one color note against an otherwise neutral black/white site */
+  --color-accent: #a7b3f2;
+  --color-accent-strong: #c7cffa;
+  --color-accent-soft: #6c78c9;
+  --color-accent-contrast: #050505;
+
+  --color-ink: #f5f5f5;
+  --color-on-ink: #050505;
+
+  /* Semantic */
+  --color-focus-ring: #c7cffa;
+
+  --font-jakarta: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+@theme inline {
+  --color-background: var(--color-background);
+  --color-background-alt: var(--color-background-alt);
+  --color-surface: var(--color-surface);
+  --color-surface-raised: var(--color-surface-raised);
+  --color-border: var(--color-border);
+  --color-border-strong: var(--color-border-strong);
+  --color-foreground: var(--color-foreground);
+  --color-muted: var(--color-muted);
+  --color-muted-soft: var(--color-muted-soft);
+  --color-accent: var(--color-accent);
+  --color-accent-strong: var(--color-accent-strong);
+  --color-accent-soft: var(--color-accent-soft);
+  --color-accent-contrast: var(--color-accent-contrast);
+  --color-ink: var(--color-ink);
+  --color-on-ink: var(--color-on-ink);
+  --color-focus-ring: var(--color-focus-ring);
+
+  --font-display: var(--font-jakarta);
+  --font-sans: var(--font-jakarta);
+
+  --animate-fade-up: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-fade-in: fade-in 0.6s ease-out both;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-bloom: bloom 18s ease-in-out infinite;
+  --animate-letter-in: letter-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-sheen: sheen 1.6s ease-in-out infinite;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(1rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  @keyframes bloom {
+    0%,
+    100% {
+      transform: translate(-5%, -5%) scale(1);
+    }
+    50% {
+      transform: translate(5%, 5%) scale(1.15);
+    }
+  }
+  @keyframes letter-in {
+    from {
+      opacity: 0;
+      transform: translateY(0.4em);
+      filter: blur(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+  @keyframes sheen {
+    from {
+      transform: translateX(-20%);
+    }
+    to {
+      transform: translateX(220%);
+    }
+  }
+}
+
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--color-accent-soft);
+  color: var(--color-on-ink);
+}
+
+/* Visible, on-brand focus ring for keyboard users */
+:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Hero wordmark: thin outlined letterforms, transparent fill. Each letter
+   animates its own fill/stroke/lift on hover. Only color, opacity and
+   transform change — no layout-affecting properties. */
+.hero-letter {
+  display: inline-block;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(245, 245, 245, 0.72);
+  transition:
+    color 300ms ease-out,
+    -webkit-text-stroke-color 300ms ease-out,
+    transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.hero-letter:hover {
+  color: rgba(199, 207, 250, 0.14);
+  -webkit-text-stroke-color: var(--color-accent-strong);
+  transform: translateY(-0.035em);
+}
+
+/* Browsers without -webkit-text-stroke get a legible filled wordmark
+   instead of invisible transparent text. */
+@supports not (-webkit-text-stroke: 1px red) {
+  .hero-letter {
+    color: rgba(245, 245, 245, 0.5);
+  }
+  .hero-letter:hover {
+    color: var(--color-accent-strong);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-letter {
+    transform: none !important;
+  }
+}

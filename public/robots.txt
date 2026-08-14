@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://binarybuilds.dev/sitemap.xml
