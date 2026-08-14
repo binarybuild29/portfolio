@@ -90,10 +90,25 @@ export type Project = {
   serviceSlug: string;
   summary: string;
   year: string;
+  /** Live URL, for real (non-placeholder) projects. */
+  url?: string;
+  /** Screenshot shown on the card, for real (non-placeholder) projects. */
+  image?: string;
 };
 
 // Placeholder case studies — swap in real client work when available.
 export const PROJECTS: Project[] = [
+  {
+    slug: "gateau-studio",
+    name: "Gateau Studio",
+    category: "Website",
+    serviceSlug: "websites",
+    summary:
+      "An editorial-style site for a handcrafted-cake bakery — hover-driven product cards, a tasting collection, and an order form built to turn browsers into orders.",
+    year: "2026",
+    url: "https://cake-jade-nine.vercel.app",
+    image: "/images/work/gateau-studio.jpg",
+  },
   {
     slug: "northfield-studio",
     name: "Northfield Studio",

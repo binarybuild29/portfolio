@@ -1,0 +1,163 @@
+/* Scoped theme for the Gateau Studio bakery demo (/portfolio/cake-demo).
+   Everything here is namespaced under .cake-demo so it never leaks into
+   the main site's dark tokens defined in src/index.css. */
+
+@import "@fontsource/playfair-display/400.css";
+@import "@fontsource/playfair-display/500.css";
+@import "@fontsource/playfair-display/600.css";
+@import "@fontsource/playfair-display/700.css";
+@import "@fontsource/playfair-display/400-italic.css";
+@import "@fontsource/jost/300.css";
+@import "@fontsource/jost/400.css";
+@import "@fontsource/jost/500.css";
+@import "@fontsource/jost/600.css";
+
+.cake-demo {
+  --cd-bg: #0f0d0d;
+  --cd-bg-alt: #141212;
+  --cd-surface: #1b1817;
+  --cd-surface-raised: #211d1c;
+  --cd-border: #322c29;
+  --cd-border-strong: #453d38;
+
+  --cd-cream: #f5efe6;
+  --cd-cream-muted: #c9c0b3;
+  --cd-cream-soft: #8f867b;
+
+  --cd-gold: #c5a880;
+  --cd-gold-strong: #ddc39a;
+  --cd-gold-soft: #8f7757;
+  --cd-gold-contrast: #0f0d0d;
+
+  --cd-font-display: "Playfair Display", ui-serif, Georgia, serif;
+  --cd-font-sans: "Jost", ui-sans-serif, system-ui, sans-serif;
+
+  background: var(--cd-bg);
+  color: var(--cd-cream);
+  font-family: var(--cd-font-sans);
+  position: relative;
+}
+
+.cake-demo * {
+  box-sizing: border-box;
+}
+
+.cake-demo ::selection {
+  background: var(--cd-gold-soft);
+  color: var(--cd-cream);
+}
+
+.cake-demo :focus-visible {
+  outline: 2px solid var(--cd-gold-strong);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.cake-demo .cd-font-display {
+  font-family: var(--cd-font-display);
+}
+
+/* Low-opacity outlined watermark text used behind showcase sections. */
+.cake-demo .cd-watermark {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+}
+
+.cake-demo .cd-watermark span {
+  position: absolute;
+  white-space: nowrap;
+  font-family: var(--cd-font-display);
+  font-weight: 600;
+  font-size: clamp(4rem, 16vw, 11rem);
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(197, 168, 128, 0.14);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+@supports not (-webkit-text-stroke: 1px red) {
+  .cake-demo .cd-watermark span {
+    color: rgba(197, 168, 128, 0.06);
+  }
+}
+
+/* Pill buttons */
+.cake-demo .cd-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  padding: 0.85rem 1.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition:
+    transform 200ms ease,
+    background-color 200ms ease,
+    border-color 200ms ease,
+    color 200ms ease;
+  white-space: nowrap;
+}
+
+.cake-demo .cd-btn-solid {
+  background: var(--cd-gold);
+  color: var(--cd-gold-contrast);
+}
+.cake-demo .cd-btn-solid:hover {
+  background: var(--cd-gold-strong);
+  transform: translateY(-1px);
+}
+
+.cake-demo .cd-btn-outline {
+  border: 1px solid var(--cd-border-strong);
+  color: var(--cd-cream);
+  background: transparent;
+}
+.cake-demo .cd-btn-outline:hover {
+  border-color: var(--cd-gold);
+  color: var(--cd-gold-strong);
+}
+
+/* Rating dots (Richness / Sweetness / Texture / Crunch bars) */
+.cake-demo .cd-dot {
+  height: 0.5rem;
+  width: 0.5rem;
+  border-radius: 999px;
+  background: var(--cd-border-strong);
+}
+.cake-demo .cd-dot-filled {
+  background: var(--cd-gold);
+}
+
+/* Slider: hide native scrollbar, keep it usable with drag */
+.cake-demo .cd-slider-track {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  cursor: grab;
+  scroll-snap-type: x proximity;
+}
+.cake-demo .cd-slider-track::-webkit-scrollbar {
+  display: none;
+}
+.cake-demo .cd-slider-track.cd-dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+}
+
+/* Entrance animation target state (GSAP animates from this) */
+.cake-demo .cd-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cake-demo .cd-reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

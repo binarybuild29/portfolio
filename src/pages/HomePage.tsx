@@ -97,39 +97,87 @@ export default function HomePage() {
         </p>
 
         <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {PROJECTS.map((project) => (
-            <li key={project.slug}>
-              <article className="group h-full overflow-hidden rounded-2xl border border-border bg-surface transition-colors duration-200 hover:border-accent-soft">
-                <div
-                  aria-hidden="true"
-                  className="flex aspect-[4/3] items-center justify-center bg-gradient-to-br from-surface-raised to-background-alt"
-                >
-                  <span className="font-display text-5xl text-border-strong transition-colors duration-200 group-hover:text-accent-soft">
-                    {project.name.charAt(0)}
-                  </span>
-                </div>
-                <div className="p-6 sm:p-7">
-                  <div className="flex items-center justify-between gap-3">
-                    <p className="text-xs font-medium tracking-widest text-accent-soft uppercase">
-                      {project.category}
-                    </p>
-                    <p className="text-xs text-muted-soft">{project.year}</p>
-                  </div>
-                  <h3 className="mt-3 font-display text-xl tracking-tight">
-                    {project.name}
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted">
-                    {project.summary}
-                  </p>
-                </div>
-              </article>
-            </li>
-          ))}
+          {PROJECTS.map((project) => {
+            const isLive = Boolean(project.url);
+            const Wrapper = isLive ? "a" : "div";
+            return (
+              <li key={project.slug}>
+                <article className="group h-full overflow-hidden rounded-2xl border border-border bg-surface transition-colors duration-200 hover:border-accent-soft">
+                  <Wrapper
+                    {...(isLive
+                      ? {
+                          href: project.url,
+                          target: "_blank",
+                          rel: "noopener noreferrer",
+                          "aria-label": `Visit the live ${project.name} site (opens in a new tab)`,
+                        }
+                      : {})}
+                    className="block"
+                  >
+                    <div
+                      aria-hidden={!isLive}
+                      className="flex aspect-[4/3] items-center justify-center overflow-hidden bg-gradient-to-br from-surface-raised to-background-alt"
+                    >
+                      {project.image ? (
+                        <img
+                          src={project.image}
+                          alt={
+                            isLive
+                              ? `Screenshot of the ${project.name} website`
+                              : ""
+                          }
+                          loading="lazy"
+                          className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.03]"
+                        />
+                      ) : (
+                        <span className="font-display text-5xl text-border-strong transition-colors duration-200 group-hover:text-accent-soft">
+                          {project.name.charAt(0)}
+                        </span>
+                      )}
+                    </div>
+                    <div className="p-6 sm:p-7">
+                      <div className="flex items-center justify-between gap-3">
+                        <p className="text-xs font-medium tracking-widest text-accent-soft uppercase">
+                          {project.category}
+                        </p>
+                        <p className="text-xs text-muted-soft">{project.year}</p>
+                      </div>
+                      <h3 className="mt-3 font-display text-xl tracking-tight">
+                        {project.name}
+                      </h3>
+                      <p className="mt-3 text-sm leading-relaxed text-muted">
+                        {project.summary}
+                      </p>
+                      {isLive && (
+                        <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-accent-strong transition-colors group-hover:text-accent">
+                          Visit site
+                          <svg
+                            viewBox="0 0 20 20"
+                            aria-hidden="true"
+                            className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
+                          >
+                            <path
+                              d="M4 10h12M11 5l5 5-5 5"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="1.8"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        </span>
+                      )}
+                    </div>
+                  </Wrapper>
+                </article>
+              </li>
+            );
+          })}
         </ul>
 
         <p className="mt-6 text-xs text-muted-soft">
-          Case studies shown are representative projects used to illustrate
-          our process and range.
+          Gateau Studio is a live project; the remaining case studies are
+          representative work used to illustrate our process and range.
         </p>
       </Section>
 
