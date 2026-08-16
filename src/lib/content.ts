@@ -110,6 +110,17 @@ export const PROJECTS: Project[] = [
     image: "/images/work/gateau-studio.jpg",
   },
   {
+    slug: "adaa",
+    name: "ADAA",
+    category: "E-commerce",
+    serviceSlug: "ecommerce",
+    summary:
+      "A full storefront for a contemporary Indian women's fashion label — product listing with filters and sort, a detail page with size/color selection, and a working cart and checkout flow.",
+    year: "2026",
+    url: "https://clothing-ten-psi.vercel.app",
+    image: "/images/work/adaa.jpg",
+  },
+  {
     slug: "northfield-studio",
     name: "Northfield Studio",
     category: "Website",

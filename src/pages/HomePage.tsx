@@ -176,8 +176,9 @@ export default function HomePage() {
         </ul>
 
         <p className="mt-6 text-xs text-muted-soft">
-          Gateau Studio is a live project; the remaining case studies are
-          representative work used to illustrate our process and range.
+          Gateau Studio and ADAA are live projects; the remaining case
+          studies are representative work used to illustrate our process
+          and range.
         </p>
       </Section>
 
