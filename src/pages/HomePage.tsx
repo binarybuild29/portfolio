@@ -176,8 +176,8 @@ export default function HomePage() {
         </ul>
 
         <p className="mt-6 text-xs text-muted-soft">
-          Gateau Studio and ADAA are live projects; the remaining case
-          studies are representative work used to illustrate our process
+          Gateau Studio, ADAA, and Swastha are live projects; the remaining
+          case studies are representative work used to illustrate our process
           and range.
         </p>
       </Section>
@@ -371,20 +371,20 @@ export default function HomePage() {
         <ul className="mt-10 grid gap-6 sm:grid-cols-2">
           {[
             {
-              name: "Piyush Vats",
-              role: "Design & Frontend",
-              bio: "Piyush leads design and frontend development — turning ideas into interfaces that are clear, fast, and easy to use.",
-              linkedin: "https://www.linkedin.com/in/piyush-vats74",
-              instagram: "",
-              initials: "PV",
-            },
-            {
               name: "Pragya Singh",
-              role: "Development & Backend",
-              bio: "Pragya handles backend development and architecture — making sure everything that powers your site is solid, secure, and scalable.",
+              role: "Design & Frontend",
+              bio: "Pragya leads design and frontend development — turning ideas into interfaces that are clear, fast, and easy to use.",
               linkedin: "https://www.linkedin.com/in/pragya-singh2909/",
               instagram: "https://www.instagram.com/pragya_singh226/",
               initials: "PS",
+            },
+            {
+              name: "Piyush Vats",
+              role: "Development & Backend",
+              bio: "Piyush handles backend development and architecture — making sure everything that powers your site is solid, secure, and scalable.",
+              linkedin: "https://www.linkedin.com/in/piyush-vats74",
+              instagram: "",
+              initials: "PV",
             },
           ].map((person) => (
             <li

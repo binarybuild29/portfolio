@@ -199,3 +199,75 @@ body {
     transform: none !important;
   }
 }
+
+/* ── Kinetic hero ─────────────────────────────────────────────────────────
+   The wordmark is split into per-letter spans. A rAF loop writes two CSS
+   custom properties per letter (--kx / --ky displacement and --kw weight
+   proximity), and the letter's transform reads them. Keeping the loop's
+   only DOM writes on custom properties means no layout is triggered — the
+   compositor handles the resulting transform. */
+
+.kinetic-letter {
+  display: inline-block;
+  /* Defaults so the transform is valid before the rAF loop first writes. */
+  --kx: 0px;
+  --ky: 0px;
+  --ks: 1;
+  transform: translate3d(var(--kx), var(--ky), 0) scale(var(--ks));
+  will-change: transform;
+  transition: color 260ms ease-out;
+}
+
+/* Chromatic fringe on the two ghost layers behind the main letters. The
+   ghosts are offset by the same cursor displacement but amplified, which
+   reads as a subtle RGB-split when the cursor sweeps across the word. */
+.kinetic-ghost {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: 0;
+  transition: opacity 300ms ease-out;
+}
+
+.kinetic-stage:hover .kinetic-ghost {
+  opacity: 0.5;
+}
+
+/* Faint grid, drawn with two repeating gradients rather than an image so
+   there's no extra request and it scales cleanly at any DPR. */
+.hero-grid-lines {
+  background-image:
+    repeating-linear-gradient(
+      to right,
+      rgba(167, 179, 242, 0.055) 0 1px,
+      transparent 1px 88px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(167, 179, 242, 0.055) 0 1px,
+      transparent 1px 88px
+    );
+  mask-image: radial-gradient(ellipse at 50% 45%, black 10%, transparent 78%);
+  -webkit-mask-image: radial-gradient(
+    ellipse at 50% 45%,
+    black 10%,
+    transparent 78%
+  );
+}
+
+/* Ambient film grain. An inline SVG feTurbulence keeps this to zero extra
+   network requests; it's static, so it costs one paint and nothing after. */
+.hero-noise {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  opacity: 0.035;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kinetic-letter {
+    transform: none !important;
+  }
+  .kinetic-stage:hover .kinetic-ghost {
+    opacity: 0;
+  }
+}

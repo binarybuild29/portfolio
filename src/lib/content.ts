@@ -121,6 +121,17 @@ export const PROJECTS: Project[] = [
     image: "/images/work/adaa.jpg",
   },
   {
+    slug: "swastha",
+    name: "Swastha",
+    category: "Web App",
+    serviceSlug: "websites",
+    summary:
+      "An AI-powered health intelligence platform and digital medical record vault — structuring and securing family health records with automated document extraction.",
+    year: "2026",
+    url: "https://swastha-seven.vercel.app",
+    image: "/images/work/swastha.jpg",
+  },
+  {
     slug: "northfield-studio",
     name: "Northfield Studio",
     category: "Website",
