@@ -175,7 +175,7 @@ export const FAQS = [
   {
     question: "How much does a website cost?",
     answer:
-      "The cost depends on the type of website, number of pages, features, and level of customization required. We offer affordable solutions for small businesses, with simple websites starting from ₹X,XXX and larger or more feature-rich projects priced according to their requirements.",
+      "The cost depends on the type of website, number of pages, features, and level of customization required. We offer affordable solutions for small businesses, with simple websites starting from ₹5,000 and larger or more feature-rich projects priced according to their requirements.",
   },
   {
     question: "How long does it take to build a website?",
