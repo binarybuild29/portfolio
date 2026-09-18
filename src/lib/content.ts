@@ -131,60 +131,6 @@ export const PROJECTS: Project[] = [
     url: "https://swastha-seven.vercel.app",
     image: "/images/work/swastha.jpg",
   },
-  {
-    slug: "northfield-studio",
-    name: "Northfield Studio",
-    category: "Website",
-    serviceSlug: "websites",
-    summary:
-      "A clean, content-first marketing site for an independent design studio, built to convert visitors into inquiries.",
-    year: "2025",
-  },
-  {
-    slug: "loomery-goods",
-    name: "Loomery Goods",
-    category: "E-commerce",
-    serviceSlug: "ecommerce",
-    summary:
-      "A full online store for a home-goods brand, with a custom catalog, cart, and streamlined checkout.",
-    year: "2025",
-  },
-  {
-    slug: "harborline-legal",
-    name: "Harborline Legal",
-    category: "Redesign",
-    serviceSlug: "redesign",
-    summary:
-      "A ground-up redesign of a decade-old law firm site, rebuilt to be fast, responsive, and easy to update.",
-    year: "2024",
-  },
-  {
-    slug: "pinegrove-cafe",
-    name: "Pinegrove Café",
-    category: "Website",
-    serviceSlug: "websites",
-    summary:
-      "A warm, menu-forward site for a neighborhood café, with online ordering links and event updates.",
-    year: "2024",
-  },
-  {
-    slug: "atlas-supply-co",
-    name: "Atlas Supply Co.",
-    category: "E-commerce",
-    serviceSlug: "ecommerce",
-    summary:
-      "A B2B storefront with tiered pricing, bulk ordering, and order-management tooling for a supply distributor.",
-    year: "2024",
-  },
-  {
-    slug: "verity-health",
-    name: "Verity Health Partners",
-    category: "Maintenance & Growth",
-    serviceSlug: "maintenance",
-    summary:
-      "Ongoing performance tuning, content updates, and SEO upkeep for a growing healthcare practice's site.",
-    year: "2024",
-  },
 ];
 
 export const PROCESS_STEPS = [

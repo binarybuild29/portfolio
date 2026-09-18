@@ -174,12 +174,6 @@ export default function HomePage() {
             );
           })}
         </ul>
-
-        <p className="mt-6 text-xs text-muted-soft">
-          Gateau Studio, ADAA, and Swastha are live projects; the remaining
-          case studies are representative work used to illustrate our process
-          and range.
-        </p>
       </Section>
 
       {/* About — 01. Who we are */}
